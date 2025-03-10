@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.input_num {
+	height: 50px;
+	width: 40px;
+	text-align: center;
+	font-size: 20px;
+}
+
+input {
+	border: 1.5px solid#555;
+}
+
+input:disabled {
+  border-color: #ddd !important;
+}
+
+button:disabled {
+  border-color: #888 !important;
+  background-color: #f0f0f0 !important;
+  color: #666 !important;
+}
+
