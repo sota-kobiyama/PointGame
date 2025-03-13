@@ -65,7 +65,7 @@ public class GameService {
 
 			//ゲーム履歴情報取得
 			try {
-				gdto.setResultList(gdao.getResultInfo(member_id, rec_update_date));
+				gdto.setResultList(gdao.getResultInfo(member_id, LocalDate.now()));
 			} catch (DataAccessException e) {
 				gdto.setSuccess(false);
 				gdto.setErr_msg("システムエラーが発生しました");
