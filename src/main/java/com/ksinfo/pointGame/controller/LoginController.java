@@ -44,7 +44,6 @@ public class LoginController {
 	@GetMapping("logout")
 	public String logout() {
 		session.removeAttribute("member_id");
-		session.removeAttribute("gdto");
 		return "redirect:/";
 	}
 }

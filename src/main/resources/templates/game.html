@@ -26,15 +26,13 @@
 		</header>
 		<main>
 			<div id="popup"></div>
-			<div id="data" th:data-game_act_flg="${gdto.game_act_flg}" th:data-popup_msg="${gdto.popup_msg}"
-				th:data-point="${gdto.point}" th:data-hide_num="${gdto.hide_num}" th:data-success="${gdto.success}"
-				th:data-err_msg="${gdto.err_msg}">
+			<div id="data" th:data-gdto="${gdto}"></div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-6">
 					<div class="mt-1 mb-5 d-flex align-content-center justify-content-end">
 						<p class="text-end me-2">現在のポイント</p>
-						<div class="point" th:text="${gdto.point}"></div>
+						<div id="point"></div>
 					</div>
 					<div class="mb-3 d-flex align-content-center align-items-center">
 						<p class="text-start" style="min-width: 100px;">隠れ数字</p>
@@ -47,16 +45,16 @@
 							<div class="mb-4 d-flex align-items-center">
 								<label class="form-label me-1" style="width:100px;">入力</label>
 								<input class="input_num" type="text" id="0" name="input_num0" maxlength="1"
-									pattern="[0-9]" onkeyup="inputNum(event,this)" autofocus>
+									onkeyup="inputNum(event,this)" autofocus>
 								<input class="input_num" type="text" id="1" name="input_num1" maxlength="1"
-									pattern="[0-9]" onkeyup="inputNum(event,this)">
+									onkeyup="inputNum(event,this)">
 								<input class="input_num me-5" type="text" id="2" name="input_num2" maxlength="1"
-									pattern="[0-9]" onkeyup="inputNum(event,this)">
+									onkeyup="inputNum(event,this)">
 								<button class="btn btn-primary text-center" type="submit">確認</button>
 							</div>
 						</form>
 					</div>
-					<div class="err_msg mb-4 text-center text-danger" id="err_msg" th:text="${err_msg}" style="height: 30px;">
+					<div class="err_msg mb-4 text-center text-danger" id="err_msg" style="height: 30px;">
 					</div>
 					<div class="text-center">
 						<table class="table table-bordered" style="border: 1.5px solid#bbb;">
@@ -67,16 +65,7 @@
 									<th>判定結果</th>
 								</tr>
 							</thead>
-							<tbody id="tbody">
-								<tr th:each="i : ${#numbers.sequence(1, 10)}">
-									<td th:text="${i} + '回目'"></td>
-									<td
-										th:text="${gdto.resultList.size() >= i ? gdto.resultList[i - 1].input_num : ''}">
-									</td>
-									<td th:text="${gdto.resultList.size() >= i ? gdto.resultList[i - 1].result : ''}">
-									</td>
-								</tr>
-							</tbody>
+							<tbody id="tbody"></tbody>
 						</table>
 					</div>
 				</div>

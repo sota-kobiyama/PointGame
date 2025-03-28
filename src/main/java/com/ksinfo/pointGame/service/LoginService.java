@@ -25,11 +25,11 @@ public class LoginService {
 		} catch (DataAccessException e) {
 			mdto.setSuccess(false);
 			mdto.setErr_msg("システムエラーが発生しました");
-			System.out.println("データベースの接続に失敗しました");
+			System.out.println("データベースの接続に失敗しました: " + e);
 		} catch (Exception e) {
 			mdto.setSuccess(false);
 			mdto.setErr_msg("システムエラーが発生しました");
-			System.out.println("システムエラーが発生しました");
+			System.out.println("システムエラーが発生しました: " + e);
 		}
 		return mdto;
 	}
